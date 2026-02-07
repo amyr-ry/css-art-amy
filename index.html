@@ -1,9 +1,8 @@
 <style>
-
   * { box-sizing: border-box; }
 
   body {
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -15,11 +14,570 @@
     width: 500px;
     height: 500px;
     border: 1px dashed;
+    overflow: hidden;
+    background: grey;
+    z-index: -0;
+  }
+  
+  .table {
+    position: absolute;
+    left: 20px;
+    top: 200px;
+    width: 520px;
+    height: 200px;
+    clip-path: polygon(25% 50%, 100% 50%, 75% 100%, 0% 100%);
+    background: rgb(234, 209, 184);
+    box-shadow: 0 22px 30px rgba(0,0,0,.42), inset 0 10px 14px rgba(255,255,255,.06), inset 0 -16px 18px rgba(0,0,0,.16);
   }
 
+  .table::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(220px 120px at 135px 72%, rgba(0,0,0,.35), rgba(0,0,0,0) 70%),
+      radial-gradient(260px 150px at 365px 76%, rgba(0,0,0,.30), rgba(0,0,0,0) 72%),
+      radial-gradient(200px 120px at 255px 88%, rgba(0,0,0,.18), rgba(0,0,0,0) 68%);
+    opacity:.9;
+    pointer-events:none;
+  }
+  
+  .table-bottom {
+    position: absolute;
+    width: 400px;
+    height: 25px; 
+    top: 400px;
+    left: 20px;
+    border-radius: 0 0 20px 20px;
+    background: repeating-linear-gradient(
+      0deg,
+      rgb(234, 209, 184),
+      rgb(234, 209, 184) 2px,
+      #5C3B1A 4px,
+      #5C3B1A 6px);
+    box-shadow: 0 12px 18px rgba(0,0,0,.36), inset 0 -8px 12px rgba(0,0,0,.30), inset 0 4px 6px rgba(255,255,255,.05);
+  }
+  
+  .table-right {
+    position: absolute;
+    width: 300px;
+    height: 25px; 
+    top: 310px;
+    left: 360px;
+    border-radius: 0 0 20px 20px;
+    background: repeating-linear-gradient(
+      0deg,
+      rgb(234, 209, 184),
+      rgb(234, 209, 184) 2px,
+      #5C3B1A 4px,
+      #5C3B1A 6px);
+    transform: rotate(320deg);
+    box-shadow: 0 12px 18px rgba(0,0,0,.32), inset 0 -8px 12px rgba(0,0,0,.28), inset 0 4px 6px rgba(255,255,255,.05);
+  }
+
+  .moka{
+    position:absolute;
+    left: 38px;
+    top: 96px;
+    width: 220px;
+    height: 320px;
+    background: rgba(0,0,0,.001);
+    clip-path: polygon(18% 10%, 62% 10%, 76% 14%, 86% 22%, 92% 30%, 92% 57%, 78% 57%, 78% 92%, 18% 92%, 18% 60%, 10% 56%, 8% 34%, 10% 22%);
+    z-index: 1;
+    filter: drop-shadow(18px 20px 18px rgba(0,0,0,.55)) drop-shadow(6px 8px 6px rgba(0,0,0,.35));
+    pointer-events:none;
+  }
+  
+  .moka-bottom {
+    position: absolute;
+    left: 60px;
+    top: 290px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    clip-path: polygon(50% 3%, 88% 2%, 95% 40%, 98% 70%, 100% 100%, 0 100%, 2% 71%, 5% 40%, 12% 2%);
+    background: #B8ADA1;
+    z-index: 2;
+    box-shadow: inset 0 -14px 18px rgba(0,0,0,.28), inset 0 10px 12px rgba(255,255,255,.18);
+    filter: drop-shadow(8px 12px 12px rgba(0,0,0,.35));
+  }
+
+  .moka-strip {
+    position: absolute;
+    left: 75px;
+    top: 280px;
+    width: 120px;
+    height: 15px;
+    border-radius: 10px;
+    clip-path: polygon(50% 3%, 88% 2%, 95% 40%, 98% 70%, 100% 100%, 0 100%, 2% 71%, 5% 40%, 12% 2%);
+    background: #e5dbc5;
+    box-shadow: inset 0 -6px 8px rgba(0,0,0,.20);
+    filter: drop-shadow(6px 8px 8px rgba(0,0,0,.25));
+  }
+
+  .moka-body-bottom {
+    position: absolute;
+    left: 80px;
+    top: 255px;
+    width: 110px;
+    height: 30px;
+    border-radius: 5px;
+    background: #e94c07;
+    box-shadow: inset 0 -10px 12px rgba(0,0,0,.24), inset 0 8px 10px rgba(255,255,255,.10);
+  }
+
+  .moka-body-1{
+    position: absolute;
+    top: 140px;
+    left: 50px;
+    width: 80px;
+    height: 120px;
+    clip-path: polygon(25% 0, 75% 0, 70% 100%, 30% 100%);
+    transform: rotate(-5deg);
+    background: #e94c07;
+    filter: brightness(0.9);
+  }
+  
+  .moka-body-2{
+    position: absolute;
+    top: 138px;
+    left: 80px;
+    width: 80px;
+    height: 120px;
+    clip-path: polygon(25% 0, 75% 0, 70% 100%, 30% 100%);
+    background: #e94c07;
+    filter: brightness(0.95);
+  }
+
+  .moka-body-3{
+    position: absolute;
+    top: 138px;
+    left: 110px;
+    width: 80px;
+    height: 120px;
+    clip-path: polygon(25% 0, 75% 0, 70% 100%, 30% 100%);
+    background: #e94c07;
+  }
+
+  .moka-body-4{
+    position: absolute;
+    top: 140px;
+    left: 140px;
+    width: 80px;
+    height: 120px;
+    clip-path: polygon(25% 0, 75% 0, 70% 100%, 30% 100%);
+    transform: rotate(5deg);
+    background: #e94c07;
+    filter: brightness(1.05);
+  }
+
+  .moka-body-1,
+  .moka-body-2,
+  .moka-body-3,
+  .moka-body-4{
+    box-shadow: inset 0 -14px 18px rgba(0,0,0,.20), inset 0 10px 12px rgba(255,255,255,.10);
+  }
+  
+  .moka-handle{
+    clip-path: polygon(62% 64%, 66% 73%, 69% 85%, 70% 100%, 45% 100%, 50% 45%, 56% 52%);
+    position: absolute;
+    background: black;
+    top: 60px;
+    left: 145px;
+    width: 100px;
+    height: 200px;
+    z-index: -1;
+    filter: drop-shadow(10px 16px 14px rgba(0,0,0,.45));
+  }
+  
+  .moka-top{
+    clip-path: polygon(50% 2%, 70% 5%, 85% 15%, 95% 25%, 5% 25%, 15% 15%, 30% 5%);
+    position: absolute;
+    background: #e94c07;
+    filter: brightness(1.1);
+    top: 105px;
+    left: 55px;
+    width: 160px;
+    height: 150px;
+    z-index: -1;
+    box-shadow: inset 0 -16px 18px rgba(0,0,0,.18), inset 0 10px 12px rgba(255,255,255,.12);
+  }
+  
+  .moka-knot{
+    clip-path: polygon(30% 60%, 70% 60%, 70% 80%, 65% 100%, 35% 100%, 30% 80%);
+    position: absolute;
+    background: black;
+    top: 60px;
+    left: 110px;
+    width: 45px;
+    height: 50px;
+    z-index: 3;
+    filter: drop-shadow(6px 10px 10px rgba(0,0,0,.50));
+  }
+
+  .moka-spout-1{
+    clip-path: polygon(20% 35%, 40% 30%, 55% 30%, 35% 100%);
+    position: absolute;
+    background: #e94c07;
+    filter: brightness(0.8);
+    top: 120px;
+    left: 82px;
+    width: 55px;
+    height: 65px;
+    z-index: 3;
+    box-shadow: inset 0 -12px 14px rgba(0,0,0,.22);
+  }
+
+  .moka-spout-2{
+    clip-path: polygon(80% 30%, 60% 30%, 100% 100%);
+    position: absolute;
+    background: #e94c07;
+    filter: brightness(0.6);
+    top: 133px;
+    left: 49px;
+    width: 55px;
+    height: 50px;
+    z-index: 3;
+    box-shadow: inset 0 -12px 14px rgba(0,0,0,.22);
+  }
+
+  .moka-spout-3{
+    clip-path: polygon(25% 80%, 90% 80%, 73% 89%, 60% 100%, 30% 100%, 25% 89%);
+    position: absolute;
+    background: black;
+    top: 100px;
+    left: 75px;
+    width: 30px;
+    height: 50px;
+    z-index: 4;
+    filter: drop-shadow(6px 10px 10px rgba(0,0,0,.50));
+  }
+
+  .can-1{
+    clip-path: polygon(50% 14%, 75% 13%, 100% 10%, 100% 92%, 75% 97%, 50% 99%, 25% 97%, 0 92%, 0 10%, 22% 13%);
+    position: absolute;
+    background: yellow;
+    top: 180px;
+    left: 310px;
+    width: 130px;
+    height: 150px;
+    z-index: 5;
+    filter: drop-shadow(16px 18px 16px rgba(0,0,0,.55)) drop-shadow(6px 8px 6px rgba(0,0,0,.28));
+    box-shadow: inset -18px 0 18px rgba(0,0,0,.12), inset 0 12px 14px rgba(255,255,255,.10);
+  }
+
+  .tin-1{
+    clip-path: polygon(50% 94%, 75% 91%, 100% 86%, 100% 92%, 75% 97%, 50% 100%, 25% 97%, 0 92%, 0 86%, 25% 91%);
+    position: absolute;
+    background: #725e43;
+    opacity: 0.5;
+    top: 300px;
+    left: 310px;
+    width: 130px;
+    height: 60px;
+    z-index: 5;
+    box-shadow: inset 0 -14px 18px rgba(0,0,0,.22);
+  }
+
+  .red-1{
+    clip-path: polygon(49% 65%, 75% 63%, 100% 55%, 100% 92%, 75% 97%, 50% 98%, 25% 97%, 0 92%, 0 55%, 25% 63%);
+    position: absolute;
+    background: red;
+    top: 250px;
+    left: 310px;
+    width: 130px;
+    height: 110px;
+    z-index: 5;
+    box-shadow: inset -18px 0 18px rgba(0,0,0,.12);
+  }
+
+  .lid-1{
+    clip-path: polygon(50% 92%, 75% 91%, 100% 86%, 100% 92%, 75% 97%, 50% 98%, 25% 97%, 0 92%, 0 86%, 25% 91%);
+    position: absolute;
+    background: yellow;
+    filter: brightness(0.9);
+    top: 90px;
+    left: 309px;
+    width: 130px;
+    height: 120px;
+    z-index: 5;
+    box-shadow: inset -16px 0 16px rgba(0,0,0,.10), inset 0 10px 12px rgba(255,255,255,.10);
+  }
+
+  .top-1{
+    clip-path: polygon(50% 2%, 70% 5%, 85% 15%, 95% 25%, 5% 25%, 15% 15%, 30% 5%);
+    position: absolute;
+    background: yellow;
+    filter: brightness(1.2);
+    top: 180px;
+    left: 300px;
+    width: 150px;
+    height: 90px;
+    z-index: -1;
+  }
+  
+  .can-2{
+    clip-path: polygon(50% 14%, 75% 13%, 100% 10%, 100% 92%, 75% 97%, 50% 99%, 25% 97%, 0 92%, 0 10%, 22% 13%);
+    position: absolute;
+    background: yellow;
+    top: 160px;
+    left: 250px;
+    width: 130px;
+    height: 150px;
+    z-index: 4;
+    filter: drop-shadow(12px 16px 14px rgba(0,0,0,.38)) drop-shadow(5px 7px 5px rgba(0,0,0,.22));
+    box-shadow: inset -18px 0 18px rgba(0,0,0,.12), inset 0 12px 14px rgba(255,255,255,.10);
+  }
+
+  .tin-2{
+    clip-path: polygon(50% 94%, 75% 91%, 100% 86%, 100% 92%, 75% 97%, 50% 100%, 25% 97%, 0 92%, 0 86%, 25% 91%);
+    position: absolute;
+    background: #725e43;
+    opacity: 0.5;
+    top: 280px;
+    left: 250px;
+    width: 130px;
+    height: 60px;
+    z-index: 4;
+    box-shadow: inset 0 -14px 18px rgba(0,0,0,.22);
+  }
+
+  .red-2{
+    clip-path: polygon(49% 65%, 75% 63%, 100% 55%, 100% 92%, 75% 97%, 50% 98%, 25% 97%, 0 92%, 0 55%, 25% 63%);
+    position: absolute;
+    background: red;
+    top: 230px;
+    left: 250px;
+    width: 130px;
+    height: 110px;
+    z-index: 4;
+    box-shadow: inset -18px 0 18px rgba(0,0,0,.12);
+  }
+
+  .lid-2{
+    clip-path: polygon(50% 92%, 75% 91%, 100% 86%, 100% 92%, 75% 97%, 50% 98%, 25% 97%, 0 92%, 0 86%, 25% 91%);
+    position: absolute;
+    background: yellow;
+    filter: brightness(0.9);
+    top: 70px;
+    left: 250px;
+    width: 130px;
+    height: 120px;
+    z-index: 4;
+    box-shadow: inset -16px 0 16px rgba(0,0,0,.10), inset 0 10px 12px rgba(255,255,255,.10);
+  }
+
+  .top-2{
+    clip-path: polygon(50% 2%, 70% 5%, 85% 15%, 95% 25%, 5% 25%, 15% 15%, 30% 5%);
+    position: absolute;
+    background: yellow;
+    filter: brightness(1.2);
+    top: 157px;
+    left: 240px;
+    width: 150px;
+    height: 90px;
+    z-index: -1;
+  }
+  
+  .mug-1{
+    position: absolute;
+    height: 40px;
+    width: 48px;
+    border-radius: 0 0 10px 10px;
+    top: 150px;
+    left: 360px;
+    background: linear-gradient(to bottom,white 0px,white 2px,blue 2px,blue 9px,white 9px,white 16px,blue 16px,blue 23px,white 23px,white 30px,blue 30px,blue 37px,white 37px,white 40px);
+    z-index: 7;
+    filter: drop-shadow(10px 14px 12px rgba(0,0,0,.46)) drop-shadow(4px 6px 4px rgba(0,0,0,.22));
+    box-shadow: inset 0 -10px 12px rgba(0,0,0,.14), inset 0 8px 10px rgba(255,255,255,.16);
+  }
+  
+  .handle-1{
+    clip-path: polygon(40% 5%, 45% 15%, 25% 40%, 25% 60%, 45% 85%, 40% 95%, 20% 80%, 10% 55%, 10% 45%, 20% 20%);
+    height: 30px;
+    width: 50px;
+    top: 150px;
+    left: 340px;
+    background: white;
+    position: absolute;
+    z-index: 6;
+    filter: drop-shadow(6px 10px 10px rgba(0,0,0,.32));
+  }
+  
+  .flag-1{
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    height: 35px;
+    width: 30px;
+    top: 152px;
+    left: 360px;
+    background: red;
+    position: absolute;
+    z-index: 8;
+    filter: drop-shadow(4px 8px 8px rgba(0,0,0,.22));
+  }
+  
+  .mug-bottom-1{
+    clip-path: polygon(10% 85%, 90% 85%, 80% 100%, 20% 100%);
+    position: absolute;
+    background: grey;
+    top: 135px;
+    left: 355px;
+    width: 58px;
+    height: 60px;
+    z-index: 6;
+    filter: drop-shadow(10px 14px 12px rgba(0,0,0,.30));
+    box-shadow: inset 0 -12px 14px rgba(0,0,0,.18);
+  }
+  
+  .mug-2{
+    position: absolute;
+    height: 40px;
+    width: 48px;
+    border-radius: 0 0 10px 10px;
+    top: 320px;
+    left: 230px;
+    background: linear-gradient(to bottom,white 0px,white 2px,blue 2px,blue 9px,white 9px,white 16px,blue 16px,blue 23px,white 23px,white 30px,blue 30px,blue 37px,white 37px,white 40px);
+    z-index: 7;
+    filter: drop-shadow(10px 16px 14px rgba(0,0,0,.55)) drop-shadow(4px 6px 4px rgba(0,0,0,.22));
+    box-shadow: inset 0 -10px 12px rgba(0,0,0,.14), inset 0 8px 10px rgba(255,255,255,.16);
+  }
+  
+  .handle-2{
+    clip-path: polygon(40% 5%, 45% 15%, 25% 40%, 25% 60%, 45% 85%, 40% 95%, 20% 80%, 10% 55%, 10% 45%, 20% 20%);
+    height: 30px;
+    width: 50px;
+    top: 320px;
+    left: 210px;
+    background: white;
+    position: absolute;
+    z-index: 6;
+    filter: drop-shadow(6px 12px 10px rgba(0,0,0,.34));
+  }
+  
+  .flag-2{
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    height: 35px;
+    width: 20px;
+    top: 322px;
+    left: 230px;
+    background: red;
+    position: absolute;
+    z-index: 8;
+    filter: drop-shadow(4px 8px 8px rgba(0,0,0,.22));
+  }
+  
+  .mug-bottom-2{
+    clip-path: polygon(10% 85%, 90% 85%, 80% 100%, 20% 100%);
+    position: absolute;
+    background: grey;
+    top: 305px;
+    left: 225px;
+    width: 58px;
+    height: 60px;
+    z-index: 6;
+    filter: drop-shadow(10px 16px 14px rgba(0,0,0,.42));
+    box-shadow: inset 0 -12px 14px rgba(0,0,0,.18);
+  }
+  
+  .mug-3{
+    position: absolute;
+    height: 40px;
+    width: 48px;
+    border-radius: 0 0 10px 10px;
+    top: 280px;
+    left: 230px;
+    background: linear-gradient(to bottom,white 0px,white 2px,blue 2px,blue 9px,white 9px,white 16px,blue 16px,blue 23px,white 23px,white 30px,blue 30px,blue 37px,white 37px,white 40px);
+    z-index: 5;
+    transform: rotate(-5deg);
+    filter: drop-shadow(10px 14px 12px rgba(0,0,0,.40)) drop-shadow(4px 6px 4px rgba(0,0,0,.20));
+    box-shadow: inset 0 -10px 12px rgba(0,0,0,.14), inset 0 8px 10px rgba(255,255,255,.16);
+  }
+  
+  .handle-3{
+    clip-path: polygon(40% 5%, 45% 15%, 25% 40%, 25% 60%, 45% 85%, 40% 95%, 20% 80%, 10% 55%, 10% 45%, 20% 20%);
+    height: 30px;
+    width: 50px;
+    top: 280px;
+    left: 210px;
+    background: white;
+    position: absolute;
+    z-index: 5;
+    transform: rotate(-5deg);
+    filter: drop-shadow(6px 10px 10px rgba(0,0,0,.30));
+  }
+  
+  .flag-3{
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    height: 35px;
+    width: 20px;
+    top: 282px;
+    left: 230px;
+    background: red;
+    position: absolute;
+    z-index: 5;
+    transform: rotate(-5deg);
+    filter: drop-shadow(4px 8px 8px rgba(0,0,0,.20));
+  }
+  
+  .mug-bottom-3{
+    clip-path: polygon(10% 85%, 90% 85%, 80% 100%, 20% 100%);
+    position: absolute;
+    background: grey;
+    top: 266px;
+    left: 225px;
+    width: 58px;
+    height: 60px;
+    z-index: 5;
+    transform: rotate(-5deg);
+    filter: drop-shadow(10px 14px 12px rgba(0,0,0,.36));
+    box-shadow: inset 0 -12px 14px rgba(0,0,0,.18);
+  }
 </style>
 
-
 <div class="frame">
-  <!-- add your elements here -->
+  <div class="table"></div>
+  <div class="table-bottom"></div>
+  <div class="table-right"></div>
+
+  <div class="moka"></div>
+  <div class="moka-bottom"></div>
+  <div class="moka-strip"></div>
+  <div class="moka-body-bottom"></div>
+  <div class="moka-body-1"></div>
+  <div class="moka-body-2"></div>
+  <div class="moka-body-3"></div>
+  <div class="moka-body-4"></div>
+  <div class="moka-handle"></div>
+  <div class="moka-top"></div>
+  <div class="moka-knot"></div>
+  <div class="moka-spout-1"></div>
+  <div class="moka-spout-2"></div>
+  <div class="moka-spout-3"></div>
+
+  <div class="can-1"></div>
+  <div class="tin-1"></div>
+  <div class="red-1"></div>
+  <div class="lid-1"></div>
+  <div class="top-1"></div>
+
+  <div class="can-2"></div>
+  <div class="tin-2"></div>
+  <div class="red-2"></div>
+  <div class="lid-2"></div>
+  <div class="top-2"></div>
+
+  <div class="mug-1"></div>
+  <div class="handle-1"></div>
+  <div class="flag-1"></div>
+  <div class="mug-bottom-1"></div>
+
+  <div class="mug-2"></div>
+  <div class="handle-2"></div>
+  <div class="flag-2"></div>
+  <div class="mug-bottom-2"></div>
+
+  <div class="mug-3"></div>
+  <div class="handle-3"></div>
+  <div class="flag-3"></div>
+  <div class="mug-bottom-3"></div>
 </div>
